@@ -1,0 +1,19 @@
+<%- include("header") %>
+
+<h1 class="text-center ">Add questions</h1>
+
+
+<form  action="/admin/add" method="post" class="bg-dark w-50 mx-auto p-4 rounded" style="width: 800px ;">
+    <input type="text" name="question" placeholder="enter a question" class="form-control px-3 my-4 " >
+
+    <input type="text" placeholder="enter option 1" name="option1"  class="form-control my-3">
+    <input type="text" placeholder="enter option 2" name="option2"  class="form-control my-3">
+    <input type="text" placeholder="enter option 3" name="option3"  class="form-control my-3">
+    <input type="text" placeholder="enter option 4" name="option4"  class="form-control my-3">
+
+    <label class='text-light' >correct answer upto 1 to 3</label>
+    <input type="number" name="correct" max="3" min="0" name="option4"  class="form-control my-3">
+    <button class="btn btn-success w-100">add question</button>
+</form>
+
+<%- include("footer") %>
