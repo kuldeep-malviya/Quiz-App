@@ -8,17 +8,20 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended:true}))
 
-
+//  set ejs open 
 app.set("view engine", "ejs")
+// set ejs close 
 app.use("/admin", admin)
 app.use("/quiz",quiz)
 const port = process.env.PORT || 4001;
 
+// connect mongoDb open 
 async function connectDb() {
     await mongoose.connect("mongodb://localhost:27017/quizDb")
 }
 connectDb()
 
+// connect mongoDb close 
 
 
 
@@ -35,6 +38,6 @@ app.get("/Admin",(req,res)=>{
 
 app.listen(port,()=>{
     console.log(`server is running at http://localHost:${port}`)
-    console.log("connected successfully...")
+    
 })
 

@@ -1,6 +1,78 @@
 <%- include("header") %>
-<div class="my-5 text-center">
-   <h1 class="text-center">thanks for giving this quiz your result is <%= score %>/<%= total %></h1>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #1d2671, #c33764);
+        color: #fff;
+    }
+
+    .result-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .result-card {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .score-circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #28a745;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 20px auto;
+    }
+
+    .result-text {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .result-btn {
+        padding: 12px 35px;
+        border-radius: 30px;
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="result-container">
+    <div class="result-card">
+
+        <h1 class="mb-3">🎉 Quiz Completed!</h1>
+
+        <div class="score-circle">
+            <%= score %> / <%= total %>
+        </div>
+
+        <p class="result-text">
+            Thanks for giving the quiz! <br>
+            You scored <b><%= score %></b> out of <b><%= total %></b>
+        </p>
+
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/quiz" class="btn btn-light result-btn">
+                Try Again 🔁
+            </a>
+            <a href="/" class="btn btn-success result-btn">
+                Home 🏠
+            </a>
+        </div>
+
+    </div>
 </div>
 
 <%- include("footer") %>

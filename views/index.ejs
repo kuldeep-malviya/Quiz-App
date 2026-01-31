@@ -1,7 +1,87 @@
 <%- include("header") %>
-<div class="my-5 text-center">
-    <h1 class="my-3">welcome to  tech quiz</h1>
-    <a href="/quiz" class="btn btn-success px-5">star Quiz</a>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #141E30, #243B55);
+
+
+        color: #fff;
+    }
+
+    .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .quiz-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 25px;
+        transition: 0.3s;
+        backdrop-filter: blur(10px);
+    }
+
+    .quiz-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .start-btn {
+        font-size: 1.2rem;
+        padding: 12px 40px;
+        border-radius: 30px;
+    }
+</style>
+
+<div class="hero">
+    <div class="container">
+        <h1 class="mb-3">🚀 Tech Quiz</h1>
+        <p class="mb-5">
+            Test your knowledge in <b>HTML, CSS, JavaScript, Mongodb & More</b><br>
+            Are you ready to challenge yourself?
+        </p>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-4 mb-3">
+                <div class="quiz-card">
+                    <h4>💡 Multiple Choice</h4>
+                    <p>Concept-based MCQs to sharpen your skills</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="quiz-card">
+                    <h4>⏱ Time Based</h4>
+                    <p>Answer fast and test your speed</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="quiz-card">
+                    <h4>🏆 Score System</h4>
+                    <p>Check your score at the end</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="/quiz" class="btn btn-success start-btn">
+            Start Quiz 🚀
+        </a>
+    </div>
 </div>
 
 <%- include("footer") %>

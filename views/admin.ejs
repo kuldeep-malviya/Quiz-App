@@ -1,44 +1,112 @@
 <%- include("header") %>
 
-<h1 class="text-center">Admin page</h1>
+<style>
+    body {
+        background: #f1f3f6;
+    }
 
+    .admin-title {
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-<div class="container my-5 text-center">
+    .admin-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
 
-  <a href="/admin/add-qsn" class="btn btn-success px-5 mx-auto my-5">Add Questions</a>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Sr</th>
-      <th scope="col">question</th>
-      <th scope="col">option 1</th>
-      <th scope="col">option 2</th>
-      <th scope="col">option 3</th>
-      <th scope="col">option 4</th>
-      <th scope="col">Answer</th>
-      <th scope="col">Action</th>
+    .add-btn {
+        border-radius: 30px;
+        font-size: 1.1rem;
+        padding: 10px 35px;
+    }
 
-    </tr>
-  </thead>
-  <tbody>
-    <% questions.forEach((qsn,ind) => { %>
-     <tr>
-      <th scope="row"><%= ind+1  %></th>
-      
-      <td><%= qsn.question %></td>
-      <% qsn.options.forEach(option => { %>
-        <td> <%= option %></td> 
-      <% }) %>
-        <td><%= qsn.correctAns %></td>
-        <td><form action="/admin/rm-qsn/<%= qsn._id %>" method="post">
-          <button class="btn btn-danger">x</button>
-        </form></td>
+    table thead {
+        background: #212529;
+        color: #fff;
+    }
 
-      
-      
-    </tr>
-    <% }) %>
-  </tbody>
-</table>
+    table th, table td {
+        vertical-align: middle;
+        text-align: center;
+        font-size: 0.95rem;
+    }
+
+    .question-text {
+        text-align: left;
+        font-weight: 600;
+    }
+
+    .delete-btn {
+        border-radius: 50%;
+        padding: 5px 10px;
+        font-weight: bold;
+    }
+</style>
+
+<h1 class="text-center my-4 admin-title">⚙️ Admin Dashboard</h1>
+
+<div class="container my-5">
+    <div class="admin-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0">📋 Quiz Questions</h4>
+            <a href="/admin/add-qsn" class="btn btn-success add-btn">
+                ➕ Add Question
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Sr</th>
+                        <th>Question</th>
+                        <th>Option 1</th>
+                        <th>Option 2</th>
+                        <th>Option 3</th>
+                        <th>Option 4</th>
+                        <th>Correct</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% questions.forEach((qsn, ind) => { %>
+                        <tr>
+                            <td><%= ind + 1 %></td>
+
+                            <td class="question-text"><%= qsn.question %></td>
+
+                            <% qsn.options.forEach(option => { %>
+                                <td><%= option %></td>
+                            <% }) %>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    <%= qsn.correctAns %>
+                                </span>
+                            </td>
+
+                            <td>
+                                <form 
+                                    action="/admin/rm-qsn/<%= qsn._id %>" 
+                                    method="post"
+                                    onsubmit="return confirm('Delete this question?')"
+                                >
+                                    <button class="btn btn-danger delete-btn">
+                                        ✕
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </div>
+
 <%- include("footer") %>
