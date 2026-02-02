@@ -1,10 +1,10 @@
 import mongoose from "mongoose"
-const QuizSchema = new mongoose.Schema({
+const quizSchema = new mongoose.Schema({
     question:{type:String,required:true},
     options:[{type:String,required:true}],
     correctAns:{type:Number,required:true}
 })
 
-const Quiz = mongoose.model("quiz", QuizSchema)
+const quiz = mongoose.model("quiz", quizSchema)
 
-export default Quiz
+export default quiz
